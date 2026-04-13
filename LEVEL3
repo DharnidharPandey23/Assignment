@@ -1,0 +1,61 @@
+1.Create a program to take a number as input find the frequency of each digit in the number using an array and display the frequency of each digit
+Hint => 
+Take the input for a number
+Find the count of digits in the number
+Find the digits in the number and save them in an array
+Find the frequency of each digit in the number. For this define a frequency array of size 10, Loop through the digits array, and increase the frequency of each digit
+Display the frequency of each digit in the number
+import java.util.Scanner;
+
+public class DigitFrequency {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number: ");
+        int num = sc.nextInt();
+
+        int temp = num;
+        int count = 0;
+
+        // Step 1: Count digits
+        while (temp != 0) {
+            count++;
+            temp /= 10;
+        }
+
+        int[] digits = new int[count];
+
+        // Step 2: Store digits in array
+        temp = num;
+        for (int i = 0; i < count; i++) {
+            digits[i] = temp % 10;
+            temp /= 10;
+        }
+
+        // Step 3: Frequency array
+        int[] freq = new int[10];
+
+        for (int i = 0; i < count; i++) {
+            freq[digits[i]]++;
+        }
+
+        // Step 4: Display frequency
+        System.out.println("Digit Frequencies:");
+        for (int i = 0; i < 10; i++) {
+            if (freq[i] > 0) {
+                System.out.println(i + " -> " + freq[i]);
+            }
+        }
+    }
+}
+
+
+OUTPUT
+Enter number: 1223451
+
+Digit Frequencies:
+1 -> 2
+2 -> 2
+3 -> 1
+4 -> 1
+5 -> 1
