@@ -1,0 +1,111 @@
+1.Write a program to input the Principal, Rate, and Time values and calculate Simple Interest.
+Hint => 
+Simple Interest = Principal * Rate * Time / 100
+Take user input for principal, rate, time
+Write a method to calculate the simple interest given principle, rate and time as parameters
+Output “The Simple Interest is ___ for Principal ___, Rate of Interest ___ and Time ___”
+import java.util.Scanner;
+
+public class SimpleInterest {
+
+    // Method
+    public static double calculateSI(double p, double r, double t) {
+        return (p * r * t) / 100;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Principal: ");
+        double p = sc.nextDouble();
+
+        System.out.print("Enter Rate: ");
+        double r = sc.nextDouble();
+
+        System.out.print("Enter Time: ");
+        double t = sc.nextDouble();
+
+        double si = calculateSI(p, r, t);
+
+        System.out.println("The Simple Interest is " + si +
+                " for Principal " + p +
+                ", Rate of Interest " + r +
+                " and Time " + t);
+    }
+}
+
+OUTPUT
+Enter Principal: 1000
+Enter Rate: 5
+Enter Time: 2
+The Simple Interest is 100.0 for Principal 1000.0, Rate of Interest 5.0 and Time 2.0
+
+2.Create a program to find the maximum number of handshakes among students.
+Hint => 
+Get integer input for the numberOfStudents variable.
+Use the combination = (n * (n - 1)) / 2 formula to calculate the maximum number of possible handshakes.
+Write a method to use the combination formulae to calculate the number of handshakes
+Display the number of possible handshakes.
+import java.util.Scanner;
+
+public class Handshakes {
+
+    // Method
+    public static int calculateHandshakes(int n) {
+        return (n * (n - 1)) / 2;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of students: ");
+        int n = sc.nextInt();
+
+        int result = calculateHandshakes(n);
+
+        System.out.println("Maximum handshakes: " + result);
+    }
+}
+
+OUTPUT
+Enter number of students: 5
+Maximum handshakes: 10
+
+3.An athlete runs in a triangular park with sides provided as input by the user in meters. If the athlete wants to complete a 5 km run, then how many rounds must the athlete complete
+Hint => 
+Take user input for 3 sides of a triangle 
+The perimeter of a triangle is the addition of all sides and rounds is distance/perimeter
+Write a Method to compute the number of rounds user needs to do to complete 5km run
+import java.util.Scanner;
+
+public class Running {
+
+    // Method
+    public static double calculateRounds(double a, double b, double c) {
+        double perimeter = a + b + c;
+        return 5000 / perimeter; // 5 km = 5000 meters
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter side 1: ");
+        double a = sc.nextDouble();
+
+        System.out.print("Enter side 2: ");
+        double b = sc.nextDouble();
+
+        System.out.print("Enter side 3: ");
+        double c = sc.nextDouble();
+
+        double rounds = calculateRounds(a, b, c);
+
+        System.out.println("Rounds needed: " + rounds);
+    }
+}
+OUTPUT
+Enter side 1: 100
+Enter side 2: 150
+Enter side 3: 200
+Rounds needed: 11.11111111111111
+
