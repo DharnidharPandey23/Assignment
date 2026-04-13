@@ -1,0 +1,74 @@
+1.Create a program to find the shortest, tallest, and mean height of players present in a football team.
+Hint => 
+The formula to calculate the mean is: mean = sum of all elements/number of elements
+Create an int array named heights of size 11 and get 3 digits random height in cms for each player in the range 150 cms to 250 cms
+Write the method to Find the sum of all the elements present in the array.
+Write the method to find the mean height of the players on the football team
+Write the method to find the shortest height of the players on the football team 
+Write the method to find the tallest height of the players on the football team
+Finally display the results
+import java.util.Random;
+
+public class FootballHeights {
+
+    // Method to calculate sum
+    public static int sum(int[] arr) {
+        int s = 0;
+        for (int x : arr) {
+            s += x;
+        }
+        return s;
+    }
+
+    // Method to calculate mean
+    public static double mean(int[] arr) {
+        return (double) sum(arr) / arr.length;
+    }
+
+    // Method to find shortest
+    public static int shortest(int[] arr) {
+        int min = arr[0];
+        for (int x : arr) {
+            if (x < min) min = x;
+        }
+        return min;
+    }
+
+    // Method to find tallest
+    public static int tallest(int[] arr) {
+        int max = arr[0];
+        for (int x : arr) {
+            if (x > max) max = x;
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        int[] heights = new int[11];
+        Random rand = new Random();
+
+        // Generate random heights (150–250)
+        for (int i = 0; i < heights.length; i++) {
+            heights[i] = rand.nextInt(101) + 150;
+        }
+
+        // Display heights
+        System.out.print("Player Heights: ");
+        for (int h : heights) {
+            System.out.print(h + " ");
+        }
+
+        // Results
+        System.out.println("\nShortest Height: " + shortest(heights));
+        System.out.println("Tallest Height: " + tallest(heights));
+        System.out.println("Mean Height: " + mean(heights));
+    }
+}
+OUTPUT
+Player Heights: 172 198 165 210 189 176 155 243 200 168 190 
+
+Shortest Height: 155
+Tallest Height: 243
+Mean Height: 187.8181818181818
+
+
