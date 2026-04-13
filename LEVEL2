@@ -1,0 +1,135 @@
+1.Create a program to find the factors of a number taken as user input, store the factors in an array, and display the factors. Also find the sum, sum of square of factors and product of the factors and display the results
+Hint => 
+Take the input for a number
+Write a static Method to find the factors of the number and save them in an array and return the array. 
+To find factors and save to array will have two loops. The first loop to find the count and initialize the array with the count. And the second loop save the factors into the array
+Write a method to find the sum of the factors using factors array
+Write a method to find the product of the factors using factors array
+Write a method to find the sum of square of the factors using Math.pow() method
+import java.util.Scanner;
+
+public class FactorsProgram {
+
+    // Method to get factors
+    public static int[] getFactors(int n) {
+        int count = 0;
+
+        // Count factors
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) count++;
+        }
+
+        int[] factors = new int[count];
+        int index = 0;
+
+        // Store factors
+        for (int i = 1; i <= n; i++) {
+            if (n % i == 0) {
+                factors[index++] = i;
+            }
+        }
+
+        return factors;
+    }
+
+    // Sum of factors
+    public static int sum(int[] arr) {
+        int s = 0;
+        for (int x : arr) s += x;
+        return s;
+    }
+
+    // Product of factors
+    public static int product(int[] arr) {
+        int p = 1;
+        for (int x : arr) p *= x;
+        return p;
+    }
+
+    // Sum of squares
+    public static double sumOfSquares(int[] arr) {
+        double s = 0;
+        for (int x : arr) {
+            s += Math.pow(x, 2);
+        }
+        return s;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number: ");
+        int n = sc.nextInt();
+
+        int[] factors = getFactors(n);
+
+        System.out.print("Factors: ");
+        for (int x : factors) {
+            System.out.print(x + " ");
+        }
+
+        System.out.println("\nSum: " + sum(factors));
+        System.out.println("Product: " + product(factors));
+        System.out.println("Sum of Squares: " + sumOfSquares(factors));
+    }
+OUTPUT
+Enter number: 6
+Factors: 1 2 3 6 
+Sum: 12
+Product: 36
+Sum of Squares: 50.0
+
+
+2.Write a program to find the sum of n natural numbers using recursive method and compare the result with the formulae n*(n+1)/2 and show the result from both computations is correct. 
+Hint => 
+Take the user input number and check whether it's a Natural number
+Write a Method to find the sum of n natural numbers using recursion
+Write a Method to find the sum of n natural numbers using the formulae n*(n+1)/2 
+Compare the two results and print the result
+import java.util.Scanner;
+
+public class SumNatural {
+
+    // Recursive method
+    public static int sumRecursive(int n) {
+        if (n == 1) return 1;
+        return n + sumRecursive(n - 1);
+    }
+
+    // Formula method
+    public static int sumFormula(int n) {
+        return n * (n + 1) / 2;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter n: ");
+        int n = sc.nextInt();
+
+        if (n <= 0) {
+            System.out.println("Not a natural number");
+            return;
+        }
+
+        int rec = sumRecursive(n);
+        int formula = sumFormula(n);
+
+        System.out.println("Sum using Recursion: " + rec);
+        System.out.println("Sum using Formula: " + formula);
+
+        if (rec == formula) {
+            System.out.println("Both results are correct");
+        } else {
+            System.out.println("Results do not match");
+        }
+    }
+}
+OUTPUT
+Enter n: 5
+Sum using Recursion: 15
+Sum using Formula: 15
+Both results are correct
+
+
+}
