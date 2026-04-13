@@ -1,0 +1,123 @@
+1.Create a program to find the bonus of 10 employees based on their years of service and the total bonus amount the company Zara has to pay, along with the old and new salary.
+Hint => 
+Zara decides to give a bonus of 5% to employees whose year of service is more than 5 years or 2% if less than 5 years
+Define a double array to save salary and years of service for each of the 10 employees
+Also define a double array to save the new salary and the bonus amount as well as variables to save the total bonus, total old salary, and new salary
+Define a loop to take input from the user. If salary or year of service is an invalid number then ask the use to enter again. Note in this case you will have to decrement the index counter
+Define another loop to calculate the bonus of 10 employees based on their years of service. Save the bonus in the array, compute the new salary, and save in the array. Also, the total bonus and total old and new salary can be calculated in the loop
+Print the total bonus payout as well as the total old and new salary of all the employees
+import java.util.Scanner;
+
+public class EmployeeBonus {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double[] salary = new double[10];
+        double[] years = new double[10];
+        double[] bonus = new double[10];
+        double[] newSalary = new double[10];
+
+        double totalBonus = 0, totalOldSalary = 0, totalNewSalary = 0;
+
+        // Input
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Enter salary of employee " + (i + 1) + ": ");
+            salary[i] = sc.nextDouble();
+
+            System.out.print("Enter years of service: ");
+            years[i] = sc.nextDouble();
+
+            // Validation
+            if (salary[i] < 0 || years[i] < 0) {
+                System.out.println("Invalid input! Enter again.");
+                i--; // retry
+                continue;
+            }
+        }
+
+        // Calculation
+        for (int i = 0; i < 10; i++) {
+            if (years[i] > 5) {
+                bonus[i] = salary[i] * 0.05;
+            } else {
+                bonus[i] = salary[i] * 0.02;
+            }
+
+            newSalary[i] = salary[i] + bonus[i];
+
+            totalBonus += bonus[i];
+            totalOldSalary += salary[i];
+            totalNewSalary += newSalary[i];
+        }
+
+        // Output
+        System.out.println("Total Bonus: " + totalBonus);
+        System.out.println("Total Old Salary: " + totalOldSalary);
+        System.out.println("Total New Salary: " + totalNewSalary);
+    }
+OUTPUT
+Enter salary of employee 1: 10000
+Enter years of service: 6
+...
+Total Bonus: 3500.0
+Total Old Salary: 100000.0
+Total New Salary: 103500.0
+
+
+2.Create a program to find the youngest friends among 3 Amar, Akbar, and Anthony based on their ages and the tallest among the friends based on their heights
+Hint => 
+Take user input for age and height for the 3 friends and store it in two arrays each to store the values for age and height of the 3 friends
+Loop through the array and find the youngest of the 3 friends and the tallest of the 3 friends
+Finally display the youngest and tallest of the 3 friends
+import java.util.Scanner;
+
+public class Friends {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] names = {"Amar", "Akbar", "Anthony"};
+        int[] age = new int[3];
+        double[] height = new double[3];
+
+        // Input
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter age of " + names[i] + ": ");
+            age[i] = sc.nextInt();
+
+            System.out.print("Enter height of " + names[i] + ": ");
+            height[i] = sc.nextDouble();
+        }
+
+        // Find youngest
+        int minIndex = 0;
+        for (int i = 1; i < 3; i++) {
+            if (age[i] < age[minIndex]) {
+                minIndex = i;
+            }
+        }
+
+        // Find tallest
+        int maxIndex = 0;
+        for (int i = 1; i < 3; i++) {
+            if (height[i] > height[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        // Output
+        System.out.println("Youngest: " + names[minIndex]);
+        System.out.println("Tallest: " + names[maxIndex]);
+    }
+}
+
+OUTPUT
+Enter age of Amar: 25
+Enter height of Amar: 5.5
+Enter age of Akbar: 22
+Enter height of Akbar: 5.7
+Enter age of Anthony: 24
+Enter height of Anthony: 6.0
+
+Youngest: Akbar
+Tallest: Anthony
+}
